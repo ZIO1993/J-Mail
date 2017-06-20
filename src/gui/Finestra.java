@@ -10,31 +10,31 @@ import java.io.File;
 import javax.swing.*;
 
 public class Finestra extends Thread{
-	String titolo="J-Mail";
-	JFrame frm;
-	
-	JButton cambiaServer;
-	JButton pulisci;
-	JButton invia;
-	
-	JTextArea dest;
-	JTextArea mitt;
-	JTextArea ogg;
-	JTextArea text;
-    JTextField textFile;
+    private String titolo="J-Mail";
+    private JFrame frm;
 
-	JTextField loop;
-	JButton open;
+    private JButton cambiaServer;
+    private JButton pulisci;
+    private JButton invia;
+
+    private JTextArea dest;
+    private JTextArea mitt;
+    private JTextArea ogg;
+    private JTextArea text;
+    private JTextField textFile;
+
+	private JTextField loop;
+    private JButton open;
 	static JLabel debug;
 
-    Color rosso = new Color(255,0,0);
-    Color verde = new Color(0,255,0);
+    private Color rosso = new Color(255,0,0);
+    private Color verde = new Color(0,255,0);
 
-    File file;
+    private File file;
 
-    String hostServer = "smtp.net.vodafone.it";
+    private String hostServer = "smtp.net.vodafone.it";
 	
-	public Finestra() {
+	private Finestra() {
 		frm = creaFinestra(titolo);
 		frm.setLocationRelativeTo(null);
 		frm.setVisible(true);
@@ -155,13 +155,13 @@ public class Finestra extends Thread{
 		pulisci = new JButton("Pulisci");
 		invia = new JButton("Invia");
 		
-		debug = new JLabel("Benvenuto in J-Mail! Ricorda che io non mi assumero nessuna responsabilit? per le mail inviate. Buon invio!");
+		debug = new JLabel("Benvenuto in J-Mail! Ricorda che io non mi assumero nessuna responsabilità per le mail inviate. Buon invio!");
 		debug.setHorizontalAlignment(SwingConstants.CENTER);
 		cambiaServer.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String host = JOptionPane.showInputDialog("Inserisci il nuovo indirizzo", hostServer);
-				if(host != null && host != hostServer){
+				if(host != null && !host.equals(hostServer)){
 					hostServer=host;
 				}
 			}
@@ -190,6 +190,7 @@ public class Finestra extends Thread{
 		});
 		sudx.add(new JLabel("Mail da inviare:"));
 		sudx.add(loop);
+		//sudx.add(new JSeparator(JSeparator.VERTICAL));
 		sudx.add(cambiaServer);
 		sudx.add(pulisci);
 		sudx.add(invia);
@@ -197,29 +198,27 @@ public class Finestra extends Thread{
 		sud.add(debug);
 		return sud;
 	}
-	
-	public void invia(){
+
+    private void invia(){
 		String[] destinatari = dest.getText().replaceAll(" ", "").split(";");
 		String[] mittenti = mitt.getText().replaceAll(" ", "").split(";");
-        for(int i=00; i<destinatari.length; i++){
-            if(destinatari[i].contains("@") && destinatari[i].contains(".")){
-            }else{
+        for(int i=0; i<destinatari.length; i++){
+            if(!destinatari[i].contains("@") || !destinatari[i].contains(".")){
                 destinatari[i] = "NULL";
             }
 		}
 
-        for(int i=00; i<mittenti.length; i++){
-            if(mittenti[i].contains("@") && mittenti[i].contains(".")){
-            }else{
+        for(int i=0; i<mittenti.length; i++){
+            if(!mittenti[i].contains("@") || !mittenti[i].contains(".")){
                 mittenti[i] = "NULL";
             }
         }
 
-		int l = 1;
+
 		String temp =loop.getText();
-		l = Integer.parseInt(temp);
+        int l = Integer.parseInt(temp);
 		if(l<0){
-			debug.setText("Il numero inserito non ? consentito");
+			debug.setText("Il numero inserito non è consentito");
 			return;
 		}
 		for(int k=0; k<l; k++){
@@ -249,7 +248,7 @@ public class Finestra extends Thread{
         }
     }
 
-    public void apri(){
+    private void apri(){
 	    JFileChooser fileChooser = new JFileChooser();
 	    fileChooser.setApproveButtonText("Apri");
         int ret = fileChooser.showOpenDialog(null);
