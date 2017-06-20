@@ -120,6 +120,7 @@ public class Finestra extends Thread{
         quarto.add(scrollFile);
         cx.add(quarto);
         open = new JButton("Seleziona File");
+        open.setToolTipText("Consente di seleziona un file");
         //open.setMaximumSize(new Dimension(10,3));
         open.addActionListener(new ActionListener() {
             @Override
@@ -149,12 +150,12 @@ public class Finestra extends Thread{
 		sud.setLayout(new GridLayout(2, 1));
 		JPanel sudx = new JPanel(new FlowLayout());
 		loop = new JTextField("001");
-		
+		loop.setToolTipText("Permette di indicare la quantità di volte che la stessa mail verrà inviata, Non può essere negativo!");
 		cambiaServer = new JButton("Cambia Server");
 		pulisci = new JButton("Pulisci");
 		invia = new JButton("Invia");
 		
-		debug = new JLabel("Benvenuto in J-Mail! Ricorda che io non mi assumero nessuna responsabilità per le mail inviate. Buon invio!");
+		debug = new JLabel("Benvenuto in J-Mail! Ricorda che io non mi assumero nessuna responsabilit? per le mail inviate. Buon invio!");
 		debug.setHorizontalAlignment(SwingConstants.CENTER);
 		cambiaServer.addActionListener(new ActionListener() {			
 			@Override
@@ -174,6 +175,9 @@ public class Finestra extends Thread{
 				mitt.setText("");
 				ogg.setText("");
 				text.setText("");
+				file=null;
+				textFile.setText("Seleziona file");
+				textFile.setForeground(rosso);
 				debug.setText("Pulito");
 			}
 		});
@@ -215,7 +219,7 @@ public class Finestra extends Thread{
 		String temp =loop.getText();
 		l = Integer.parseInt(temp);
 		if(l<0){
-			debug.setText("Il numero inserito non è consentito");
+			debug.setText("Il numero inserito non ? consentito");
 			return;
 		}
 		for(int k=0; k<l; k++){
