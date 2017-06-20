@@ -13,11 +13,12 @@ import java.awt.event.ActionListener;
 public class Licenza extends Thread {
     private String titolo = "Accetta per proseguire...";
     private String testo = "L'autore del programma non si assumerà nessuna responsabilità in merito ai danni arrecati a cose e/o persone" +
-                            "\nprovocati dall'uso di questo programma e all'invio dei file e/o contenuti nelle e-mail inviate dal medesimo," +
-                            "\ninoltre ricorda che l'invio di e-mail contenenti malware e/o minaccie a cose e/o persone" +
+                            "\nprovocati dall'uso di questo programma e all'invio dei file e/o contenuti nelle e-mail inviate dal" +
+                            "\nmedesimo. Inoltre ricorda che l'invio di e-mail contenenti malware e/o minaccie a cose e/o persone" +
                             "\nè un reato penale punibile con la reclusione, così come è anche reato penale lo stalking." +
-                            "\nInoltre ricordo che l'utilizzo di questo programma non garantisce il corretto invio delle e-mail" +
-                            "\nDetto ciò vi auguro un buon invio!\n\nAldo D'Introno";
+                            "\nInoltre ricordo che l'utilizzo di questo programma non garantisce il corretto invio delle e-mail." +
+                            "\nDetto ciò vi auguro un buon invio!" +
+                            "\n\nAldo D'Introno";
 
     private static JFrame frame;
     private JButton accetto;

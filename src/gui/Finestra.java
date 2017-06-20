@@ -149,13 +149,14 @@ public class Finestra extends Thread{
 		JPanel sud = new JPanel();
 		sud.setLayout(new GridLayout(2, 1));
 		JPanel sudx = new JPanel(new FlowLayout());
-		loop = new JTextField("001");
+		loop = new JTextField("001", 4);
+		loop.setHorizontalAlignment(JTextField.CENTER);
 		loop.setToolTipText("Permette di indicare la quantità di volte che la stessa mail verrà inviata, Non può essere negativo!");
 		cambiaServer = new JButton("Cambia Server");
 		pulisci = new JButton("Pulisci");
 		invia = new JButton("Invia");
 		
-		debug = new JLabel("Benvenuto in J-Mail! Ricorda che io non mi assumero nessuna responsabilità per le mail inviate. Buon invio!");
+		debug = new JLabel("  Benvenuto in J-Mail! Ricorda che io non mi assumero nessuna responsabilità per le mail inviate. Buon invio!  ");
 		debug.setHorizontalAlignment(SwingConstants.CENTER);
 		cambiaServer.addActionListener(new ActionListener() {			
 			@Override
@@ -171,10 +172,11 @@ public class Finestra extends Thread{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dest.setText("");
-				mitt.setText("");
-				ogg.setText("");
-				text.setText("");
+				dest.setText("Inserisci i destinatari...");
+				mitt.setText("Inserisci i mittenti...");
+				ogg.setText("Inserisci l'oggetto..");
+				text.setText("Inserisci il testo..");
+				loop.setText("001");
 				file=null;
 				textFile.setText("Seleziona file");
 				textFile.setForeground(rosso);
